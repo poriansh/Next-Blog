@@ -4,7 +4,7 @@ import CategoryList from "@/components/blog/CategoryList";
 
 function Bloglayout({children}) {
   return (
-    <div className="fgfvf">
+    <div>
       <h1>لیست بلاگ ها</h1>
       <div className="grid grid-cols-12 gap-8 mt-5">
         <div className="col-span-12 lg:col-span-4 xl:col-span-3 text-secondary-500 space-y-4">

@@ -38,7 +38,7 @@ function Header() {
             {user ? (
               <NavLink path="/profile">پروفایل</NavLink>
             ) : (
-              <NavLink path="/signin">ورود</NavLink>
+              <NavLink path="/auth">ورود</NavLink>
             )}
           </li>
         </ul>
