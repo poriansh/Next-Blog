@@ -1,6 +1,7 @@
+
 import Vazir from "@/constants/LocalFont";
 import "@/styles/globals.css";
-import  Header  from '@/components/Header';
+import { Providers } from "@/app/Providers";
 
 export const metadata = {
   title: {
@@ -14,9 +15,10 @@ export const metadata = {
 export default function RootLayout({children}) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${Vazir.variable} font-vazir`} >
-        <Header/>
-        <div className="container">{children}</div>
+      <body className={`${Vazir.variable} font-vazir`}>
+        <Providers>
+          <div>{children}</div>
+        </Providers>
       </body>
     </html>
   );

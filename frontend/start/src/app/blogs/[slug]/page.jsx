@@ -2,26 +2,26 @@ import {getPosts, getSinglePosts} from "@/services/PostServices";
 import Image from "next/image";
 import {notFound} from "next/navigation";
 
-export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
-    postSlug: post.postSlug,
+    slug: post.slug,
   }));
 }
 
 export async function generateMetadata({params}) {
-  const post = await getSinglePosts(params.postSlug);
+  const post = await getSinglePosts(params.slug);
   return {
     title: `${post.title}`,
   };
 }
 async function BlogSlug({ params }) {
  
-  const post = await getSinglePosts(params.postSlug);
+  const post = await getSinglePosts(params.slug);
   if (!post) notFound()
     return (
-      <div className="text-secondary-600 max-w-screen-md mx-auto">
+      <div className="text-secondary-600  max-w-screen-md mx-auto">
         <h1 className="text-secondary-700 text-2xl font-bold mb-8">{post.title}</h1>
         <p className="mb-4">{post.briefText}</p>
         <p className="mb-8">{post.text}</p>
