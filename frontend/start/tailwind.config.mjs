@@ -11,7 +11,7 @@ const config = {
   theme: {
     extend: {
       colors: {
-        primary: {
+        appprimary: {
           900: "rgb(var(--color-primary-900))",
           800: "rgb(var(--color-primary-800))",
           700: "rgb(var(--color-primary-700))",
@@ -22,7 +22,7 @@ const config = {
           200: "rgb(var(--color-primary-200))",
           100: "rgb(var(--color-primary-100))",
         },
-        secondary: {
+        appsecondary: {
           900: "rgb(var(--color-secondary-900))",
           800: "rgb(var(--color-secondary-800))",
           700: "rgb(var(--color-secondary-700))",
@@ -35,9 +35,9 @@ const config = {
           50: "rgb(var(--color-secondary-50))",
           0: "rgb(var(--color-secondary-0))",
         },
-        success: "rgb(var(--color-success))",
-        warning: "rgb(var(--color-warning))",
-        error: "rgb(var(--color-error))",
+        appsuccess: "rgb(var(--color-success))",
+        appwarning: "rgb(var(--color-warning))",
+        apperror: "rgb(var(--color-error))",
       },
 
       container: {

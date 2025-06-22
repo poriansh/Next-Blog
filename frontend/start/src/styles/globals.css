@@ -74,22 +74,22 @@
 
 @layer components {
   .form {
-    @apply flex flex-col gap-y-8 bg-secondary-0 p-4 rounded-xl w-full max-w-lg;
+    @apply flex flex-col gap-y-8 bg-appsecondary-0 p-4 rounded-xl w-full max-w-lg;
   }
   .textField__input {
-    @apply w-full py-3 px-4 rounded-xl text-secondary-900 border border-secondary-100 bg-secondary-100 hover:border-primary-500 focus:border-primary-500 focus:bg-secondary-0 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200;
+    @apply w-full py-3 px-4 rounded-xl text-appsecondary-900 border border-appsecondary-100 bg-appsecondary-100 hover:border-appprimary-500 focus:border-appprimary-500 focus:bg-appsecondary-0 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-appprimary-200 dark:focus:shadow-appsecondary-200;
   }
   .btn {
     @apply px-3 py-3 rounded-xl transition-all duration-300;
   }
   .btn--primary {
-    @apply bg-primary-900 hover:bg-primary-700 text-primary-100;
+    @apply bg-appprimary-900 hover:bg-appprimary-700 text-appprimary-100;
   }
   .btn--secondary {
-    @apply bg-secondary-600 text-secondary-100;
+    @apply bg-appsecondary-600 text-appsecondary-100;
   }
   .btn--outline {
-    @apply border border-secondary-300 text-secondary-400;
+    @apply border border-appsecondary-300 text-appsecondary-400;
   }
   .btn--danger {
     @apply border border-rose-700 text-rose-700;
@@ -98,10 +98,10 @@
     @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
   }
   .badge--primary {
-    @apply bg-primary-900 text-white;
+    @apply bg-appprimary-900 text-white;
   }
   .badge--secondary {
-    @apply bg-secondary-200 text-secondary-600;
+    @apply bg-appsecondary-200 text-appsecondary-600;
   }
   .badge--success {
     @apply bg-green-500 text-white;

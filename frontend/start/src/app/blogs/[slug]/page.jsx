@@ -21,8 +21,8 @@ async function BlogSlug({ params }) {
   const post = await getSinglePosts(params.slug);
   if (!post) notFound()
     return (
-      <div className="text-secondary-600  max-w-screen-md mx-auto">
-        <h1 className="text-secondary-700 text-2xl font-bold mb-8">{post.title}</h1>
+      <div className="text-appsecondary-600  max-w-screen-md mx-auto">
+        <h1 className="text-appsecondary-700 text-2xl font-bold mb-8">{post.title}</h1>
         <p className="mb-4">{post.briefText}</p>
         <p className="mb-8">{post.text}</p>
         <div className="relative aspect-video overflow-hidden rounded-lg mb-10">

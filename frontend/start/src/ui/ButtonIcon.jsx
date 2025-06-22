@@ -1,7 +1,7 @@
 const btnType = {
-  primary: "bg-primary-100 text-primary-700 hover:bg-primary-900 hover:text-white",
-  secondary: "bg-secondary-200  text-secondary-500 hover:bg-secondary-500 hover:text-secondary-0",
-  outline: "border border-secondary-200 text-secondary-500 hover:bg-secondary-200",
+  primary: "bg-appprimary-100 text-appprimary-700 hover:bg-appprimary-900 hover:text-white",
+  secondary: "bg-appsecondary-200  text-appsecondary-500 hover:bg-appsecondary-500 hover:text-appsecondary-0",
+  outline: "border border-appsecondary-200 text-appsecondary-500 hover:bg-appsecondary-200",
   red: "bg-red-100  text-red-500 hover:bg-red-500 hover:text-white",
   danger: "border border-red-100 text-red-500",
 };

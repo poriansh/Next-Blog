@@ -21,10 +21,10 @@ function Header() {
     const user = false
   return (
     <header
-      className={`z-10 shadow-md bg bg-white bg-inherit mb-10 sticky top-0 transition-all duration-200 border-b border-b-secondary-300`}
+      className={`z-10 shadow-md bg bg-white bg-inherit mb-10 sticky top-0 transition-all duration-200 border-b border-b-appsecondary-300`}
     >
       <nav className="container xl:max-w-screen-xl">
-        <ul className="flex items-center text-secondary-400  justify-between py-2">
+        <ul className="flex items-center text-appsecondary-400  justify-between py-2">
           <div className="flex items-center gap-x-10">
             {navLinks.map((navLink) => {
               return (
