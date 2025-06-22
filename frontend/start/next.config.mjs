@@ -11,9 +11,6 @@ const nextConfig = {
       },
     ],
   },
-  logging: {
-    fetches : true
-  }
   // experimental : {
   //   ppr : "incremental" // داینامیک داینامیک کردن بعضی کامپوننت ها 
   // }
