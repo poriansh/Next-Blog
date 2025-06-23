@@ -58,7 +58,10 @@ export default function Auth() {
                 }}
               >
                 {({ values, handleChange, errors, touched, handleBlur }) => (
-                  <Form className="flex  mt-2 justify-between h-full flex-col gap-6">
+                  <Form
+                    autoComplete="off"
+                    className="flex  mt-2 justify-between h-full flex-col gap-6"
+                  >
                     <div className="space-y-5">
                       <Input
                         name="email"
@@ -68,6 +71,7 @@ export default function Auth() {
                         size="sm"
                         isRequired
                         value={values.email}
+                        autoComplete="new-email"
                         dir="lft"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -78,9 +82,11 @@ export default function Auth() {
                       <Input
                         name="password"
                         label="رمز عبور"
+                        autoComplete={false}
                         type="password"
                         variant="underlined"
                         className="text-right"
+                        autoComplete="new-password"
                         size="sm"
                         dir="lft"
                         isRequired
@@ -129,7 +135,10 @@ export default function Auth() {
                 }}
               >
                 {({ values, handleChange, errors, touched, handleBlur }) => (
-                  <Form className="flex  mt-2 justify-between h-full flex-col gap-6">
+                  <Form
+                    autoComplete="off"
+                    className="flex  mt-2 justify-between h-full flex-col gap-6"
+                  >
                     <div className="space-y-5">
                       <Input
                         name="name"
@@ -150,6 +159,7 @@ export default function Auth() {
                         label="ایمیل"
                         variant="underlined"
                         size="sm"
+                        autoComplete="new-password"
                         dir="lft"
                         className="text-right"
                         isRequired
@@ -165,6 +175,7 @@ export default function Auth() {
                         type="password"
                         variant="underlined"
                         size="sm"
+                        autoComplete="new-password"
                         className="text-right"
                         isRequired
                         dir="lft"
