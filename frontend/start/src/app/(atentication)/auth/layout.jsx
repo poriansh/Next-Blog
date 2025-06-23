@@ -1,7 +1,5 @@
-
-
 export const metadata = {
-  title: "ورود | بلاگ اپ",
+  title: "ورود",
 };
 
 export default function AuthLayout({children}) {

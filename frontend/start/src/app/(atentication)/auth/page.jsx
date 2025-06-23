@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutate } from "@/services/QueryHandler";
+import { useRouter } from "next/navigation";
 
 const loginSchema = Yup.object({
   email: Yup.string()
@@ -23,14 +24,21 @@ const signUpSchema = Yup.object({
     .required("رمز عبور الزامی است"),
 });
 export default function Auth() {
+ const route = useRouter()
   const [selected, setSelected] = useState("login");
-  const { mutate: signin, LoadingSignin } = useMutate({
+  const {mutate: signin, LoadingSignin} = useMutate({
     url: "user/signin",
     method: "post",
+    successCallback() {
+      route.push("/profile");
+    },
   });
   const { mutate: signup, isPending: LoadingSignup } = useMutate({
     url: "user/signup",
     method: "post",
+    successCallback() {
+      setSelected("login")
+    }
   });
 
   return (
@@ -42,11 +50,11 @@ export default function Auth() {
             fullWidth
             aria-label="Tabs form"
             selectedKey={selected}
-            size="md"
+            size="lg"
             onSelectionChange={setSelected}
           >
             <Tab
-              className="h-full flex flex-col !outline-0"
+              className="h-full  flex flex-col !outline-0"
               key="login"
               title="ورود"
             >
