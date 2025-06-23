@@ -12,7 +12,7 @@ const nextConfig = {
     ],
   },
   // experimental : {
-  //   ppr : "incremental" // داینامیک داینامیک کردن بعضی کامپوننت ها 
+  //   ppr : "incremental" // داینامیک داینامیک کردن بعضی کامپوننت ها
   // }
 };
 

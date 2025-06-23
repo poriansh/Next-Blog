@@ -15,9 +15,9 @@ export const metadata = {
 export default function RootLayout({children}) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${Vazir.variable} font-vazir`}>
+      <body className={`${Vazir.variable} font-vazir min-h-screen`}>
         <Providers>
-          <div>{children}</div>
+          <div className="min-h-screen">{children}</div>
         </Providers>
       </body>
     </html>

@@ -1,65 +1,203 @@
 "use client";
-import {Tabs, Tab, Input, Link, Button, Card, CardBody} from "@heroui/react";
-import {useState} from "react";
+import { Tabs, Tab, Input, Link, Button, Card, CardBody } from "@heroui/react";
+import { useState } from "react";
+import { Formik, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useMutate } from "@/services/QueryHandler";
 
+const loginSchema = Yup.object({
+  email: Yup.string()
+    .email("فرمت ایمیل صحیح نیست")
+    .required("ایمیل الزامی است"),
+  password: Yup.string()
+    .min(8, "رمز عبور باید حداقل 8 کاراکتر باشد")
+    .required("رمز عبور الزامی است"),
+});
+const signUpSchema = Yup.object({
+  name: Yup.string().required("نام و نام خانوادگی الزامی است"),
+  email: Yup.string()
+    .email("فرمت ایمیل صحیح نیست")
+    .required("ایمیل الزامی است"),
+  password: Yup.string()
+    .min(8, "رمز عبور باید حداقل 8 کاراکتر باشد")
+    .required("رمز عبور الزامی است"),
+});
 export default function Auth() {
   const [selected, setSelected] = useState("login");
+  const { mutate: signin, LoadingSignin } = useMutate({
+    url: "user/signin",
+    method: "post",
+  });
+  const { mutate: signup, isPending: LoadingSignup } = useMutate({
+    url: "user/signup",
+    method: "post",
+  });
 
   return (
-    <div className="flex flex-col w-full">
-      <Card className="max-w-full w-[340px] h-[400px]">
+    <div className="flex w-full items-center justify-center min-h-screen">
+      <Card className="max-w-full w-[340px] max-h-full h-[400px]">
         <CardBody className="overflow-hidden">
           <Tabs
+            color="primary"
             fullWidth
             aria-label="Tabs form"
             selectedKey={selected}
             size="md"
             onSelectionChange={setSelected}
           >
-            <Tab key="login" title="Login">
-              <form className="flex flex-col gap-4">
-                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
-                <Input
-                  isRequired
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
-                <p className="text-center text-small">
-                  Need to create an account?{" "}
-                  <Link size="sm" onPress={() => setSelected("sign-up")}>
-                    Sign up
-                  </Link>
-                </p>
-                <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="primary">
-                    Login
-                  </Button>
-                </div>
-              </form>
+            <Tab
+              className="h-full flex flex-col !outline-0"
+              key="login"
+              title="ورود"
+            >
+              <Formik
+                initialValues={{ email: "", password: "" }}
+                validationSchema={loginSchema}
+                onSubmit={(values) => {
+                  signin({ query: values });
+                }}
+              >
+                {({ values, handleChange, errors, touched, handleBlur }) => (
+                  <Form className="flex  mt-2 justify-between h-full flex-col gap-6">
+                    <div className="space-y-5">
+                      <Input
+                        name="email"
+                        label="ایمیل"
+                        variant="underlined"
+                        className="text-right"
+                        size="sm"
+                        isRequired
+                        value={values.email}
+                        dir="lft"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.email && Boolean(errors.email)}
+                        errorMessage={touched.email && errors.email}
+                      />
+
+                      <Input
+                        name="password"
+                        label="رمز عبور"
+                        type="password"
+                        variant="underlined"
+                        className="text-right"
+                        size="sm"
+                        dir="lft"
+                        isRequired
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.password && Boolean(errors.password)}
+                        errorMessage={touched.password && errors.password}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-5">
+                      <p className="text-center text-small">
+                        <span>نیاز به ایجاد حساب کاربری؟ </span>
+                        <Link
+                          className="cursor-pointer"
+                          size="sm"
+                          onPress={() => setSelected("sign-up")}
+                        >
+                          ثبت نام
+                        </Link>
+                      </p>
+                      <Button
+                        isLoading={LoadingSignin}
+                        type="submit"
+                        fullWidth
+                        color="primary"
+                        className="flex-row-reverse"
+                      >
+                        ورود
+                      </Button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </Tab>
-            <Tab key="sign-up" title="Sign up">
-              <form className="flex flex-col gap-4 h-[300px]">
-                <Input isRequired label="Name" placeholder="Enter your name" type="password" />
-                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
-                <Input
-                  isRequired
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
-                <p className="text-center text-small">
-                  Already have an account?{" "}
-                  <Link size="sm" onPress={() => setSelected("login")}>
-                    Login
-                  </Link>
-                </p>
-                <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="primary">
-                    Sign up
-                  </Button>
-                </div>
-              </form>
+            <Tab
+              className="h-full !outline-0 flex flex-col"
+              key="sign-up"
+              title="ثبت نام"
+            >
+              <Formik
+                initialValues={{ name: "", email: "", password: "" }}
+                validationSchema={signUpSchema}
+                onSubmit={(values) => {
+                  signup({ query: values });
+                }}
+              >
+                {({ values, handleChange, errors, touched, handleBlur }) => (
+                  <Form className="flex  mt-2 justify-between h-full flex-col gap-6">
+                    <div className="space-y-5">
+                      <Input
+                        name="name"
+                        label="نام و نام خانوادگی"
+                        variant="underlined"
+                        className="text-right"
+                        size="sm"
+                        dir="lft"
+                        isRequired
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.name && Boolean(errors.name)}
+                        errorMessage={touched.name && errors.name}
+                      />
+                      <Input
+                        name="email"
+                        label="ایمیل"
+                        variant="underlined"
+                        size="sm"
+                        dir="lft"
+                        className="text-right"
+                        isRequired
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.email && Boolean(errors.email)}
+                        errorMessage={touched.email && errors.email}
+                      />
+                      <Input
+                        name="password"
+                        label="رمز عبور"
+                        type="password"
+                        variant="underlined"
+                        size="sm"
+                        className="text-right"
+                        isRequired
+                        dir="lft"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.password && Boolean(errors.password)}
+                        errorMessage={touched.password && errors.password}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-5">
+                      <p className="text-center text-small">
+                        <span>آیا قبلاً ثبت نام کرده‌اید؟ </span>
+                        <Link
+                          className="cursor-pointer"
+                          size="sm"
+                          onPress={() => setSelected("login")}
+                        >
+                          ورود
+                        </Link>
+                      </p>
+                      <Button
+                        isLoading={LoadingSignup}
+                        type="submit"
+                        fullWidth
+                        color="primary"
+                      >
+                        ثبت نام
+                      </Button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </Tab>
           </Tabs>
         </CardBody>
