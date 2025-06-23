@@ -35,7 +35,7 @@ export default function Auth() {
 
   return (
     <div className="flex w-full items-center justify-center min-h-screen">
-      <Card className="max-w-full w-[340px] max-h-full h-[400px]">
+      <Card className="max-w-full w-[340px] max-h-full h-[500px]">
         <CardBody className="overflow-hidden">
           <Tabs
             color="primary"
