@@ -121,7 +121,7 @@ export default function Auth() {
                         type="submit"
                         fullWidth
                         color="primary"
-                        className="flex-row-reverse"
+                        className="flex-row-reverse gap-5"
                       >
                         ورود
                       </Button>
@@ -209,6 +209,7 @@ export default function Auth() {
                         isLoading={LoadingSignup}
                         type="submit"
                         fullWidth
+                        className="gap-5 flex-row-reverse"
                         color="primary"
                       >
                         ثبت نام
