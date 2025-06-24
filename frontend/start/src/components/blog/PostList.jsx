@@ -1,13 +1,13 @@
 import React from "react";
 import CaverImg from "./CaverImg";
 import Link from "next/link";
-import { ClockIcon } from '@heroicons/react/24/outline';
+import { ClockIcon } from "@heroicons/react/24/outline";
 import Author from "@/ui/Author";
 import PostIntraction from "./PostIntraction";
 import { getPosts } from "@/services/PostServices";
 
 async function PostList() {
-  const posts = await  getPosts();
+  const posts = await getPosts();
   if (!posts.length) return null;
   return (
     <div className="grid grid-cols-12 gap-8">
@@ -22,7 +22,9 @@ async function PostList() {
             <CaverImg {...post} />
             <div className="bg-appsecondary-100  p-2 rounded-lg flex flex-col w-full justify-between flex-1">
               <Link href={`/blogs/${post.slug}`}>
-                <h2 className="mb-4 hover:text-appprimary-800 transition-all  font-bold text-appsecondary-700">{post.title}</h2>
+                <h2 className="mb-4 hover:text-appprimary-800 transition-all  font-bold text-appsecondary-700">
+                  {post.title}
+                </h2>
               </Link>
               <div className="flex items-center justify-between mb-4">
                 <Author {...post.author} />

@@ -19,7 +19,6 @@ export const useRequest = ({
   select,
   customBaseUrl,
 }) => {
-  const toast = useToast();
 
   return useQuery({
     queryKey,
@@ -49,6 +48,10 @@ export const useRequest = ({
     },
     onError: (error) => {
       errorCallback?.(error.message);
+      addToast({
+        description: error.message,
+        color: "danger",
+      });
     },
     select,
   });

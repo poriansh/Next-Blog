@@ -30,7 +30,7 @@ export default function Auth() {
     url: "user/signin",
     method: "post",
     successCallback() {
-      route.push("/profile");
+      route.push("/blogs");
     },
   });
   const { mutate: signup, isPending: LoadingSignup } = useMutate({
