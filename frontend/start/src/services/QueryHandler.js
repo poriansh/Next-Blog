@@ -1,4 +1,3 @@
-
 import { addToast } from "@heroui/react";
 import http from "./htttpServices";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -18,8 +17,9 @@ export const useRequest = ({
   errorCallback,
   select,
   customBaseUrl,
+  showErrorToast = false,
+  colorError = "danger",
 }) => {
-
   return useQuery({
     queryKey,
     queryFn: async () => {
@@ -36,7 +36,12 @@ export const useRequest = ({
         const response = await base(config);
         return response.data?.data || response.data;
       } catch (error) {
-        throw new Error(error?.response?.data?.message || error.message);
+        if (showErrorToast) {
+          addToast({
+            description: error?.response?.data?.message,
+            color: colorError,
+          });
+        }
       }
     },
     enabled,
@@ -48,10 +53,6 @@ export const useRequest = ({
     },
     onError: (error) => {
       errorCallback?.(error.message);
-      addToast({
-        description: error.message,
-        color: "danger",
-      });
     },
     select,
   });

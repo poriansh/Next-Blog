@@ -24,9 +24,9 @@ const signUpSchema = Yup.object({
     .required("رمز عبور الزامی است"),
 });
 export default function Auth() {
- const route = useRouter()
+  const route = useRouter();
   const [selected, setSelected] = useState("login");
-  const {mutate: signin, LoadingSignin} = useMutate({
+  const { mutate: signin, isPending: LoadingSignin } = useMutate({
     url: "user/signin",
     method: "post",
     successCallback() {
@@ -37,8 +37,8 @@ export default function Auth() {
     url: "user/signup",
     method: "post",
     successCallback() {
-      setSelected("login")
-    }
+      setSelected("login");
+    },
   });
 
   return (
