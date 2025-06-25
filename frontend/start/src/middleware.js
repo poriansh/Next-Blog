@@ -2,7 +2,6 @@ import {NextResponse} from "next/server";
 import middlewareAuth from "./utils/middlewareAuth";
 
 export async function middleware(req) {
-  const url = req.url;
   const pathname = req.nextUrl.pathname;
 
   if (pathname.startsWith("/profile")) {
