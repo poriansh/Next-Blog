@@ -20,7 +20,7 @@ function Header() {
   const { data: user, isLoading } = useRequest({
     url: "user/profile",
     queryKey: ["user"],
-    showErrorToast: true,
+    // showErrorToast: true,
     colorError: "warning",
   });
   return (

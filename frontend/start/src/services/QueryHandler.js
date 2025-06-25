@@ -42,6 +42,7 @@ export const useRequest = ({
             color: colorError,
           });
         }
+        throw new Error(error?.response?.data?.message || error.message);
       }
     },
     enabled,
