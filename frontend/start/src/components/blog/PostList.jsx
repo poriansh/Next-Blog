@@ -6,9 +6,9 @@ import Author from "@/ui/Author";
 import PostIntraction from "./PostIntraction";
 import { getPosts } from "@/services/PostServices";
 
-async function PostList() {
-  const posts = await getPosts();
-  if (!posts.length) return null;
+async function PostList({ option = "" }) {
+  const posts = await getPosts(option);
+  if (posts.length === 0) return <p>هیچ پستی یافت نشد</p>;
   return (
     <div className="grid grid-cols-12 gap-8">
       {posts.map((post) => {

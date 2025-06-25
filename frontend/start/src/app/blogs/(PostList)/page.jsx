@@ -4,7 +4,7 @@ export const metadata = {
   title : 'بلاگ ها',
 }
 function Blogpage() {
-
+  
   return (
     <div>
         <PostList />
