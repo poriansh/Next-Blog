@@ -1,10 +1,11 @@
+import RelatedPost from "@/components/blog/RelatedPost";
 import {getPosts, getSinglePosts} from "@/services/PostServices";
 import Image from "next/image";
 import {notFound} from "next/navigation";
 
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const posts = await getPosts("");
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -22,7 +23,9 @@ async function BlogSlug({ params }) {
   if (!post) notFound()
     return (
       <div className="text-appsecondary-600  max-w-screen-md mx-auto">
-        <h1 className="text-appsecondary-700 text-2xl font-bold mb-8">{post.title}</h1>
+        <h1 className="text-appsecondary-700 text-2xl font-bold mb-8">
+          {post.title}
+        </h1>
         <p className="mb-4">{post.briefText}</p>
         <p className="mb-8">{post.text}</p>
         <div className="relative aspect-video overflow-hidden rounded-lg mb-10">
@@ -33,6 +36,7 @@ async function BlogSlug({ params }) {
             alt={post.title}
           />
         </div>
+        {post.related.length > 0 ? <RelatedPost posts={post.related} /> : null}
       </div>
     );
  
