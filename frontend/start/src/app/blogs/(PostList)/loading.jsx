@@ -1,10 +1,10 @@
-import {Spinner} from "@/ui/Spinner";
+import { SpinnerLoader} from "@/ui/Spinner";
 import React from "react";
 
 function loading() {
   return (
     <div>
-      <Spinner />
+      <SpinnerLoader />
     </div>
   );
 }
