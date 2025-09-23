@@ -1,11 +1,25 @@
 import http from "./htttpServices.js";
-
-export function getSinglePosts(slug) {
-  return http.get(`/post/slug/${slug}`).then(({ data }) => data.data.post);
+import { notFound } from "next/navigation";
+export async function getSinglePosts(slug) {
+  try {
+    const { data } = await http.get(`/post/slug/${slug}`);
+    return data.data.post;
+  } catch (err) {
+    if (err.response?.status === 404) {
+      notFound();
+    }
+    throw err;
+  }
 }
 
-export function getPosts(option) {
-  return http
-    .get(`/post/list?categorySlug=${option}`)
-    .then(({ data }) => data.data.posts);
+export async function getPosts(option) {
+  try {
+    const { data } = await http.get(`/post/list?categorySlug=${option}`);
+    return data.data.posts;
+  } catch (err) {
+    if (err.response?.status === 404) {
+      return [];
+    }
+    throw err;
+  }
 }

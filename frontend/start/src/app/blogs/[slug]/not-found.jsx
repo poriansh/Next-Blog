@@ -11,7 +11,7 @@ function NotFound() {
               صفحه ای که دنبالش بودید، پیدا نشد
             </h1>
             <button
-              onClick={moveBack}
+               onClick={moveBack}
               className="flex bg-appprimary-900 items-center text-white  p-3 rounded-md gap-x-2"
             >
               <span> برگشت</span>
