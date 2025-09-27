@@ -16,9 +16,7 @@ function Bloglayout({ children }) {
             </Suspense>
           </div>
           <div className="col-span-12 lg:col-span-8 xl:col-span-9">
-            <Suspense fallback={<SpinnerLoader />}>
               {children}
-            </Suspense>
           </div>
         </div>
       </div>
