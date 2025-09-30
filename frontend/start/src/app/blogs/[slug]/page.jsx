@@ -20,7 +20,6 @@ export async function generateMetadata({ params }) {
 async function BlogSlug({ params }) {
   const { slug } = await params;
   const post = await getSinglePosts(slug);
-  if (!post) notFound();
   return (
     <div className="text-appsecondary-600  max-w-screen-md mx-auto">
       <h1 className="text-appsecondary-700 text-2xl font-bold mb-8">

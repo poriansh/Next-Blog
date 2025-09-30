@@ -7,7 +7,9 @@ function CaverImg({coverImageUrl,title}) {
         alt={title}
         fill
         quality={100}
-        priority
+        priority // این عکس اولین عکسی است که بارگذاری می شود
+        placeholder="blur"
+        blurDataURL="/img/avatar.png"
         className="object-cover object-center w-full h-auto hover:scale-105 transition-all duration-300 rounded-lg"
       />
     </div>
