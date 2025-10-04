@@ -25,7 +25,9 @@ function Header() {
   });
   return (
     <header
-      className={`z-10 shadow-md bg bg-white bg-inherit mb-10 sticky top-0 transition-all duration-300 border-b border-b-appsecondary-300`}
+      className={`z-10 shadow-md bg bg-white bg-inherit mb-10 sticky top-0 transition-all duration-300 border-b border-b-appsecondary-300 ${
+        isLoading ? "blur-sm opacity-70" : ""
+      }`}
     >
       <nav className="container xl:max-w-screen-xl">
         <ul className="flex items-center text-appsecondary-400  justify-between py-2">
