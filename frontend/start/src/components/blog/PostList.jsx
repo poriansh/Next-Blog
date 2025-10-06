@@ -5,9 +5,13 @@ import { ClockIcon } from "@heroicons/react/24/outline";
 import Author from "@/ui/Author";
 import PostIntraction from "./PostIntraction";
 import { getPosts } from "@/services/PostServices";
+import { cookies } from "next/headers";
+import setCookie from "@/utils/setCookie";
 
 async function PostList({ option = "" }) {
-  const posts = await getPosts(option);
+  const cookieStore = cookies();
+  const optionsHeaders = setCookie(cookieStore);
+  const posts = await getPosts(option, optionsHeaders);
   if (posts.length === 0) return <p>هیچ پستی یافت نشد</p>;
   return (
     <div className="grid grid-cols-12 gap-8">

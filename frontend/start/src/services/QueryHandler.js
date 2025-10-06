@@ -101,6 +101,8 @@ export const useMutate = ({
         addToast({
           description: data.statusMessage || "عملیات با موفقیت انجام شد",
           color: "success",
+          timeout: 1500,
+          shouldShowTimeoutProgress: true,
         });
     },
     onError: (error) => {
@@ -109,6 +111,8 @@ export const useMutate = ({
         addToast({
           description: error.message,
           color: "danger",
+          timeout: 1500,
+          shouldShowTimeoutProgress: true,
         });
     },
   });
