@@ -46,7 +46,7 @@ export default function Auth() {
       <Card className="max-w-full w-[340px] max-h-full h-[500px]">
         <CardBody className="overflow-hidden">
           <Tabs
-            color="primary"
+            // color="primary"
             fullWidth
             aria-label="Tabs form"
             selectedKey={selected}

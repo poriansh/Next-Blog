@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Spinner, SpinnerLoader } from "@/ui/Spinner";
 import CategoryList from "@/components/blog/CategoryList";
 import Header from "@/components/Header";
+import Search from "@/components/blog/Search";
 
 function Bloglayout({ children }) {
   return (
@@ -16,7 +17,10 @@ function Bloglayout({ children }) {
             </Suspense>
           </div>
           <div className="col-span-12 lg:col-span-8 xl:col-span-9">
-              {children}
+            <div>
+              <Search />
+            </div>
+            <div className="mt-5">{children}</div>
           </div>
         </div>
       </div>

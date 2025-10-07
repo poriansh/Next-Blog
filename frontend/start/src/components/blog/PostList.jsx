@@ -8,10 +8,10 @@ import { getPosts } from "@/services/PostServices";
 import { cookies } from "next/headers";
 import setCookie from "@/utils/setCookie";
 
-async function PostList({ option = "" }) {
+async function PostList({ queries = "" }) {
   const cookieStore = cookies();
   const optionsHeaders = setCookie(cookieStore);
-  const posts = await getPosts(option, optionsHeaders);
+  const posts = await getPosts(queries, optionsHeaders);
   if (posts.length === 0) return <p>هیچ پستی یافت نشد</p>;
   return (
     <div className="grid grid-cols-12 gap-8">
