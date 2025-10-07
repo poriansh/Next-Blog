@@ -23,12 +23,12 @@ function Search({ defaultValue = "" }) {
         type="text"
         defaultValue={defaultValue}
         ref={inputRef}
-        onKeyUp={handleSearch}
       />
       <Button
         color="default"
         variant="flat"
         onPress={handleSearch}
+      
         className="w-10 min-w-10 h-10 px-0"
       >
         <CiSearch />
