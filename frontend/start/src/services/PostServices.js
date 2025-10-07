@@ -16,7 +16,7 @@ export async function getSinglePosts(slug) {
 // چون از axios استفاده کردی، Next.js نتونسته بفهمه ریکوئستت dynamic ـه → نتیجه: صفحه Static شده.
 export async function getPosts(queries, optionsHeaders) {
   try {
-    const { data } = await http.get(`/post/list?${queries}`, optionsHeaders);
+    const { data } = await http.get(`/post/list?${queries.toString()}`, optionsHeaders);
     return data.data.posts;
   } catch (err) {
     if (err.response?.status === 404) {
