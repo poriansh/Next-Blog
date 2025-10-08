@@ -1,3 +1,4 @@
+import PostComments from "@/components/blog/PostComments";
 import RelatedPost from "@/components/blog/RelatedPost";
 import { getPosts, getSinglePosts } from "@/services/PostServices";
 import Image from "next/image";
@@ -36,6 +37,7 @@ async function BlogSlug({ params }) {
         />
       </div>
       {post.related.length > 0 ? <RelatedPost posts={post.related} /> : null}
+      <PostComments post={post} />
     </div>
   );
 }
