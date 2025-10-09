@@ -2,7 +2,7 @@ import Avatar from "@/ui/Avater";
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/react";
 
-function Comment({ comment }) {
+function Comment({ comment, onAddComment }) {
   return (
     <>
       <div className="flex items-center justify-between mb-5 border-b  pb-2">
@@ -23,7 +23,7 @@ function Comment({ comment }) {
         <div>
           {comment.openToComment && (
             <Button
-            //   onClick={onAddComment}
+              onClick={onAddComment}
               variant="faded"
               className="text-sm flex gap-x-1 p-1 rounded-lg"
             >

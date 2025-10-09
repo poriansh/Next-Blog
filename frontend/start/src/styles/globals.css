@@ -71,6 +71,12 @@
   background-color: rgb(var(--color-secondary-500));
   color: rgb(var(--color-secondary-100));
 }
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
 
 @layer components {
   .form {

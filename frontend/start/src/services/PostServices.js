@@ -32,3 +32,6 @@ export async function likePost(postId) {
 export async function bookmarkPost(postId) {
   return http.post(`/post/bookmark/${postId}`).then(({ data }) => data.data);
 }
+export async function addNewComment(data,optionsHeaders) {
+  return http.post(`/comment/add`, data,optionsHeaders).then(({ data }) => data.data);
+}
