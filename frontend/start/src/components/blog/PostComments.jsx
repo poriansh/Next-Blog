@@ -6,10 +6,13 @@ import Modal from "@/ui/Modal";
 import ModalComponent from "@/ui/Modal";
 import { useState } from "react";
 import { AddNewComment } from "@/lib/ActionComment";
+import { useFormStatus } from "react-dom";
+import CommentForm from "./CommentForm";
 
 function PostComments({ post: { comments, _id: postId } }) {
   const [isOpen, setOpen] = useState(false);
   const [parentId, setParentId] = useState(null);
+  const { pending } = useFormStatus();
   const OpenModal = (parent) => {
     setParentId(parent);
     setOpen(true);
@@ -30,38 +33,16 @@ function PostComments({ post: { comments, _id: postId } }) {
         <ModalComponent
           hideFooter={true}
           size="2xl"
-          title={parent ? "پاسخ به نظر" : "نظر جدید"}
+          title={parentId ? "پاسخ به نظر" : "نظر جدید"}
           description={"نظر خود را وارد کنید"}
           open={isOpen}
           onOpenChange={setOpen}
-          // onSubmit={() => AddNewComment()}
         >
-          <form
-            className="flex items-end flex-col gap-y-3"
-            action={createNewComment}
-          >
-            <Textarea
-              className=""
-              isClearable
-              variant="bordered"
-              name="comment"
-              color="default"
-              placeholder="نظر خود را وارد کنید..."
-            />
-            <div className="flex  my-5 gap-2 flex-row-reverse items-center justify-end">
-              <Button type="submit" color="default" variant="shadow">
-                ثبت نظر
-              </Button>
-              <Button
-                type="button"
-                color="danger"
-                variant="light"
-                onPress={() => setOpen(false)}
-              >
-                بستن
-              </Button>
-            </div>
-          </form>
+          <CommentForm
+            parentId={parentId}
+            postId={postId}
+            onClose={() => setOpen(false)}
+          />
         </ModalComponent>
       </div>
       <div className="space-y-8 post-comments bg-secondary-0 rounded-xl py-6 px-3 lg:px-6 ">

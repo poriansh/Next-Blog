@@ -5,18 +5,16 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function AddNewComment(parentId, postId, formData) {
-  const cookieStore = cookies();
-  const optionsHeaders = setCookie(cookieStore);
-  console.log(optionsHeaders);
+  const cookieStore = await cookies();
+  const optionsHeaders = await setCookie(cookieStore);
   const dataComment = {
     parentId,
     postId,
     text: formData.get("comment"),
   };
-  console.log(dataComment);
   try {
     const { message } = await addNewComment(dataComment, optionsHeaders);
-    // revalidatePath(`/blogs/[slug]`);
+    revalidatePath(`/blogs/[slug]`);
     return message;
   } catch (error) {
     console.log(error);

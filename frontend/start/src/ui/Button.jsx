@@ -1,3 +1,4 @@
+import { SpinnerMini } from "./Spinner";
 
 const btnType = {
   primary: "btn--primary",
@@ -6,10 +7,23 @@ const btnType = {
   danger: "btn--danger",
 };
 
-function Button({children, onClick, variant = "primary", }) {
+function Button({
+  children,
+  onClick,
+  variant = "primary",
+  isLoading,
+  type = "button",
+  ...props
+}) {
   return (
-    <button onClick={onClick} className={`btn ${btnType[variant]}`}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`btn flex items-center gap-3 justify-center ${btnType[variant]}`}
+      {...props}
+    >
       {children}
+      {isLoading && <SpinnerMini />}
     </button>
   );
 }
