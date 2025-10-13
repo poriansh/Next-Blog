@@ -5,8 +5,9 @@ import PostList from "@/components/blog/PostList";
 export const metadata = {
   title: "بلاگ ها",
 };
-function Blogpage({ searchParams }) {
-  const search = searchParams.search || "";
+async function Blogpage({ searchParams }) {
+  const params = await searchParams;
+  const search = params.search || "";
   const queries = new URLSearchParams();
   if (search) queries.set("search", search);
   return <PostList queries={queries} />;

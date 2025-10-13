@@ -1,25 +1,30 @@
 "use client";
 
+import { Button, Textarea } from "@heroui/react";
 import { useFormStatus } from "react-dom";
-import Button from "@/ui/Button";
+// import Button from "@/ui/Button";
 
-export default function CommentFormClient({ onClose }) {
-  const { pending } = useFormStatus();
+export default function CommentFormClient({ onClose, pending }) {
+  // const { pending } = useFormStatus();
 
   return (
     <>
-      <textarea
-      c
+      <Textarea
         name="comment"
-        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 min-h-52"
         placeholder="نظر خود را وارد کنید..."
         disabled={pending}
+        variant="bordered"
       />
       <div className="flex my-5 gap-2 flex-row-reverse items-center justify-end">
-        <Button type="submit" variant="secondary" isLoading={pending}>
+        <Button
+          type="submit"
+          color="default"
+          variant="faded"
+          isLoading={pending}
+        >
           ثبت نظر
         </Button>
-        <Button type="button" variant="outline" onClick={onClose}>
+        <Button type="button" color="danger" variant="flat" onClick={onClose}>
           بستن
         </Button>
       </div>

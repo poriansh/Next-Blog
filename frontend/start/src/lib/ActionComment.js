@@ -4,7 +4,7 @@ import setCookie from "@/utils/setCookie";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export async function AddNewComment(parentId, postId, formData) {
+export async function AddNewComment(prevState, { formData, parentId, postId }) {
   const cookieStore = await cookies();
   const optionsHeaders = await setCookie(cookieStore);
   const dataComment = {
@@ -15,8 +15,13 @@ export async function AddNewComment(parentId, postId, formData) {
   try {
     const { message } = await addNewComment(dataComment, optionsHeaders);
     revalidatePath(`/blogs/[slug]`);
-    return message;
+    return {
+      message,
+    };
   } catch (error) {
-    console.log(error);
+    const errorMessage = error?.response?.data?.message || "خطایی رخ داده است";
+    return {
+      error: errorMessage,
+    };
   }
 }

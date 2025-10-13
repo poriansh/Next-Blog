@@ -1,4 +1,3 @@
-import { alert } from "@heroui/react";
 import http from "./htttpServices.js";
 import { notFound } from "next/navigation";
 export async function getSinglePosts(slug) {
@@ -16,7 +15,10 @@ export async function getSinglePosts(slug) {
 // چون از axios استفاده کردی، Next.js نتونسته بفهمه ریکوئستت dynamic ـه → نتیجه: صفحه Static شده.
 export async function getPosts(queries, optionsHeaders) {
   try {
-    const { data } = await http.get(`/post/list?${queries.toString()}`, optionsHeaders);
+    const { data } = await http.get(
+      `/post/list?${queries.toString()}`,
+      optionsHeaders
+    );
     return data.data.posts;
   } catch (err) {
     if (err.response?.status === 404) {
@@ -32,6 +34,8 @@ export async function likePost(postId) {
 export async function bookmarkPost(postId) {
   return http.post(`/post/bookmark/${postId}`).then(({ data }) => data.data);
 }
-export async function addNewComment(data,optionsHeaders) {
-  return http.post(`/comment/add`, data,optionsHeaders).then(({ data }) => data.data);
+export async function addNewComment(data, optionsHeaders) {
+  return http
+    .post(`/comment/add`, data, optionsHeaders)
+    .then(({ data }) => data.data);
 }

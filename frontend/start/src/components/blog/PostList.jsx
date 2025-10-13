@@ -9,8 +9,8 @@ import { cookies } from "next/headers";
 import setCookie from "@/utils/setCookie";
 
 async function PostList({ queries = "" }) {
-  const cookieStore = cookies();
-  const optionsHeaders = setCookie(cookieStore);
+  const cookieStore = await cookies();
+  const optionsHeaders = await setCookie(cookieStore);
   const posts = await getPosts(queries, optionsHeaders);
   if (posts.length === 0) return <p>هیچ پستی یافت نشد</p>;
   return (
