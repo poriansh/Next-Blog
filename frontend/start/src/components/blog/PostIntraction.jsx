@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { FaRegHeart, FaHeart, FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 function PostIntraction({ post }) {
-  console.log(post);
   const router = useRouter();
   const handleLikePost = async (postId) => {
     try {
