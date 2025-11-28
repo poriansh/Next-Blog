@@ -1,7 +1,6 @@
-"use client";
+// "use client";
 
 import {Button, Textarea} from "@heroui/react";
-import {useFormStatus} from "react-dom";
 // import Button from "@/ui/Button";
 
 export default function CommentFormClient({onClose, pending, validationError}) {
@@ -11,7 +10,7 @@ export default function CommentFormClient({onClose, pending, validationError}) {
     <>
       <Textarea
         name="comment"
-        placeholder="نظر خود را وارد کنید..."
+        placeholder="نظر خود را وارد کنید."
         disabled={pending}
         variant="bordered"
       />
