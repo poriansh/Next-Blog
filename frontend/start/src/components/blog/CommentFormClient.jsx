@@ -1,10 +1,10 @@
 "use client";
 
-import { Button, Textarea } from "@heroui/react";
-import { useFormStatus } from "react-dom";
+import {Button, Textarea} from "@heroui/react";
+import {useFormStatus} from "react-dom";
 // import Button from "@/ui/Button";
 
-export default function CommentFormClient({ onClose, pending }) {
+export default function CommentFormClient({onClose, pending, validationError}) {
   // const { pending } = useFormStatus();
 
   return (
@@ -15,6 +15,7 @@ export default function CommentFormClient({ onClose, pending }) {
         disabled={pending}
         variant="bordered"
       />
+      {validationError && <p className="text-red-500 w-full text-sm text-start">{validationError}</p>}
       <div className="flex my-5 gap-2 flex-row-reverse items-center justify-end">
         <Button
           type="submit"
