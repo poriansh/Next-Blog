@@ -1,7 +1,6 @@
 import Button from "@/ui/Button";
 import Link from "next/link";
 
-
 export default function Home() {
   return (
     <div>
@@ -12,14 +11,12 @@ export default function Home() {
       <div>
         <p className="text-center text-appsecondary-500 text-lg leading-loose">
           جایی که قراره بتونی یه اپلیکیشن بلاگ کامل رو مدیریت کنی!
-          <br /> بتونی بلاگ بسازی - کامنت بگذاری و در پنلت همه اتفاقات رو رصد کنی!
+          <br /> بتونی بلاگ بسازی - کامنت بگذاری و در پنلت همه اتفاقات رو رصد
+          کنی!
         </p>
         <div className="flex justify-center gap-x-8 w-full mt-10">
-          <Button variant="outline">
-            <Link href="/blogs">مطالعه بلاگ ها</Link>
-          </Button>
           <Button variant="primary">
-            <Link href="/profile">مدیریت بلاگ ها</Link>
+            <Link href="/blogs">مطالعه بلاگ ها</Link>
           </Button>
         </div>
       </div>
